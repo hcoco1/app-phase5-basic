@@ -3,7 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useData } from '../dataContext/DataContext';
+
 
 
 const Container = styled.div`
@@ -56,11 +56,11 @@ const validationSchema = Yup.object().shape({
 
 function LoginForm() {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useData();
+
 
   async function handleSubmit(values) {
     try {
-      const response = await fetch('/signin', {
+      const response = await fetch('http://127.0.0.1:5555/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ function LoginForm() {
       const data = await response.json();
 
       if (response.ok) {
-        setIsAuthenticated(true); // Set isAuthenticated to true
+      
         console.log("Redirecting to /users");
         navigate('/users'); // Redirect using the navigate function
       } else {

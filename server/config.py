@@ -30,5 +30,6 @@ bcrypt = Bcrypt(app)
 api = Api(app)
 
 # Instantiate CORS
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, supports_credentials=True)
+
 

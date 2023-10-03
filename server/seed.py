@@ -20,25 +20,12 @@ def create_random_user():
     """Generate a random user using Faker."""
     u = User()
     u.first_name = fake.first_name()
-    u.last_name = fake.last_name()
+   
     u.email = fake.email()
-    u.address = fake.address()
-    u.biography = fake.text(max_nb_chars=512)
-    u.hobbies = rc(
-        [
-            "Reading",
-            "Gardening",
-            "Painting or Drawing",
-            "Hiking",
-            "Cooking or Baking",
-            "Playing a Musical Instrument",
-            "Photography",
-            "Knitting or Crocheting",
-            "Dancing",
-            "Bird Watching",
-        ]
-    )
-    plain_password = fake.password()  # Generate a random password
+ 
+ 
+
+    plain_password = rc(["P@ssw0rd123", "S3cur!Ty2023", "Chang3MeNow", "5tr0ng#Pa55", "Pa$$w0rd2023" ]) # Generate a random password
     u._password_hash = bcrypt.generate_password_hash(plain_password).decode("utf-8")
 
     # Print out the email and plain password for testing
@@ -55,10 +42,7 @@ def create_random_user():
             "https://cdn0.iconfinder.com/data/icons/music-flat-1/512/music_lover-512.png",
         ]
     )
-    u.birth_date = fake.date_of_birth(minimum_age=8, maximum_age=80)
-    u.join_date = fake.date_this_decade()
-    u.last_login = fake.date_this_month()
-    u.privacy_settings = rc(["public", "private"])
+
 
     return u
 
@@ -72,7 +56,7 @@ if __name__ == "__main__":
         print("Starting seed...")
 
         # Create 100 random users
-        for _ in range(20):
+        for _ in range(5):
             user = create_random_user()
             db.session.add(user)
 

@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import UserCard from './UserCard';
-import SessionChecker from './SessionChecker';
+
 
 
 
@@ -45,10 +45,10 @@ function UsersList() {
     return (
         <div className="d-flex align-items-center">
             <Container>
-                <SessionChecker />
+          
                 <Row className="justify-content-center">
                     {users.map(user => (
-                        <Col  key={user.id} className="mb-3 d-flex justify-content-center">
+                        <Col key={user.id} className="mb-3 d-flex justify-content-center">
                             <UserCard user={user} />
                         </Col>
                     ))}

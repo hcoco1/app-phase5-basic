@@ -12,6 +12,23 @@ import SignOut from "./SignOut";
 
 function App() {
 
+  async function checkSession() {
+    try {
+        const response = await fetch('/check_session');
+        const data = await response.json();
+
+        if (response.ok) {
+            return data;
+        } else {
+            throw new Error(data.Message);
+        }
+    } catch (error) {
+        console.error("Error checking session:", error.message);
+        return null;
+    }
+}
+
+
   return (
    
       <div className="App">
